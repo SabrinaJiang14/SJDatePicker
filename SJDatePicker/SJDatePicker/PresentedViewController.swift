@@ -69,6 +69,10 @@ class PresentedViewController: UIViewController {
             picker.maximumDate = self.maximumDate!
         }
         
+        if minimumDate != nil && maximumDate != nil {
+            assert(minimumDate! < maximumDate!, "minimum date cannot bigger then maximum date")
+        }
+        
         picker.layer.masksToBounds = true
         self.view.addSubview(picker)
         
