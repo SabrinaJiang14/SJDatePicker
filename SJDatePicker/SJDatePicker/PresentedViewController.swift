@@ -28,15 +28,15 @@ class PresentedViewController: UIViewController {
     public var pickerMode:UIDatePickerMode = .dateAndTime
     public var minimumDate:Date? = nil
     public var maximumDate:Date? = nil
-    public var date_format:dateformat = .yyyy_To_ss
+    public var returnDateFormat:dateformat = .yyyy_To_ss
     public var titleString:String? = nil
     
-    private var picker:UIDatePicker = UIDatePicker.init()
-    private var confirmButton:UIButton = UIButton.init()
-    private let cornerRadius:CGFloat = 7.5
-    private let highlightedView:UIView = UIView.init()
-    private let pickerHeight:CGFloat = 216
-    private let pickerWidth:CGFloat = UIScreen.main.bounds.size.width - 10
+    fileprivate var picker:UIDatePicker = UIDatePicker.init()
+    fileprivate var confirmButton:UIButton = UIButton.init()
+    fileprivate let cornerRadius:CGFloat = 7.5
+    fileprivate let highlightedView:UIView = UIView.init()
+    fileprivate let pickerHeight:CGFloat = 216
+    fileprivate let pickerWidth:CGFloat = UIScreen.main.bounds.size.width - 10
     
     var block:returnDate?
     
@@ -61,16 +61,16 @@ class PresentedViewController: UIViewController {
         picker.layer.cornerRadius = cornerRadius
         picker.datePickerMode = self.pickerMode
         
-        if minimumDate != nil {
-            picker.minimumDate = self.minimumDate!
+        if let minDate = minimumDate {
+            picker.minimumDate = minDate
         }
         
-        if maximumDate != nil{
-            picker.maximumDate = self.maximumDate!
+        if let maxDate = maximumDate {
+            picker.maximumDate = maxDate
         }
         
-        if minimumDate != nil && maximumDate != nil {
-            assert(minimumDate! < maximumDate!, "minimum date cannot bigger then maximum date")
+        if let minDate = minimumDate, let maxDate = maximumDate {
+            assert(minDate < maxDate, "minimum date cannot bigger then maximum date")
         }
         
         picker.layer.masksToBounds = true
@@ -118,13 +118,12 @@ class PresentedViewController: UIViewController {
         if block != nil {
             self.dismiss(animated: true, completion: nil)
             let df:DateFormatter = DateFormatter.init()
-            df.dateFormat = date_format.rawValue
+            df.dateFormat = returnDateFormat.rawValue
             df.timeZone = TimeZone(secondsFromGMT: TimeZone.current.secondsFromGMT())
             let returnDate:String = df.string(from: picker.date)
             block!(returnDate)
         }
     }
-    
 }
 
 extension PresentedViewController:UIViewControllerTransitioningDelegate{
