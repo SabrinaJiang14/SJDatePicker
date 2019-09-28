@@ -1,5 +1,5 @@
 # SJDatePicker
-DatePicker for swift 3, using **UIPresentationController** and **UIViewControllerAnimatedTransitioning**.
+DatePicker for swift 5, using **UIPresentationController** and **UIViewControllerAnimatedTransitioning**.
 
 
 ## Example
@@ -7,9 +7,9 @@ Just run the example project, or clone the repo.
 
 
 ## Requirements
-* Xcode 8 or above
-* iOS 10
-* Swift 3
+* Xcode 10 or above
+* iOS 11
+* Swift 5
 
 ![GITHUB](https://github.com/SabrinaJiang14/SJDatePicker/blob/master/Example/demo.gif "demo")
 

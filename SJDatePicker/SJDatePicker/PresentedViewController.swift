@@ -25,16 +25,16 @@ enum dateformat:String{
 class PresentedViewController: UIViewController {
 
     public var buttonColor:UIColor = UIColor.blue
-    public var pickerMode:UIDatePickerMode = .dateAndTime
+    public var pickerMode:UIDatePicker.Mode = .dateAndTime
     public var minimumDate:Date? = nil
     public var maximumDate:Date? = nil
     public var returnDateFormat:dateformat = .yyyy_To_ss
     public var titleString:String? = nil
     
-    fileprivate var picker:UIDatePicker = UIDatePicker.init()
-    fileprivate var confirmButton:UIButton = UIButton.init()
+    fileprivate var picker:UIDatePicker = UIDatePicker()
+    fileprivate var confirmButton:UIButton = UIButton()
     fileprivate let cornerRadius:CGFloat = 7.5
-    fileprivate let highlightedView:UIView = UIView.init()
+    fileprivate let highlightedView:UIView = UIView()
     fileprivate let pickerHeight:CGFloat = 216
     fileprivate let pickerWidth:CGFloat = UIScreen.main.bounds.size.width - 10
     
@@ -45,7 +45,7 @@ class PresentedViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         if titleString != nil {
-            let titleLabel:UILabel = UILabel.init(frame: CGRect(x: 5, y: 0, width: pickerWidth, height: 40))
+            let titleLabel:UILabel = UILabel(frame: CGRect(x: 5, y: 0, width: pickerWidth, height: 40))
             titleLabel.backgroundColor = UIColor.white
             titleLabel.layer.cornerRadius = cornerRadius
             titleLabel.layer.masksToBounds = true
@@ -114,7 +114,7 @@ class PresentedViewController: UIViewController {
         self.transitioningDelegate = self
     }
     
-    func confirmButton_Click(){
+    @objc func confirmButton_Click(){
         if block != nil {
             self.dismiss(animated: true, completion: nil)
             let df:DateFormatter = DateFormatter.init()

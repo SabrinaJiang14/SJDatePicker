@@ -13,7 +13,7 @@ class CustomPresentationController: UIPresentationController {
     static let viewLeftPadding:CGFloat = 0
     static let viewTopPadding:CGFloat = 170
     static let viewHeight:CGFloat = 261
-    static let buttonTopPadding:CGFloat = 50
+    static let buttonTopPadding:CGFloat = 80
     static let buttonHeight:CGFloat = 40
     
     
@@ -65,13 +65,14 @@ class CustomPresentationController: UIPresentationController {
         
         var frame = containerView.bounds
         frame = frame.insetBy(dx: CustomPresentationController.viewLeftPadding, dy: CustomPresentationController.viewTopPadding)
-        frame.origin.y = containerView.bounds.size.height - CustomPresentationController.viewHeight - CustomPresentationController.buttonTopPadding - CustomPresentationController.viewLeftPadding
+        frame.origin.y = containerView.bounds.size.height - CustomPresentationController.viewHeight - CustomPresentationController.buttonTopPadding - CustomPresentationController.viewLeftPadding - containerView.safeAreaInsets.bottom + 12
+        
         frame.size.height = CustomPresentationController.viewHeight + CustomPresentationController.buttonTopPadding
         
         return frame
     }
     
-    func dismissSelf(){
+    @objc func dismissSelf(){
         self.presentedViewController.dismiss(animated: true, completion: nil)
     }
     
