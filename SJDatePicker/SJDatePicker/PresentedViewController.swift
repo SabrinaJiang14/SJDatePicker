@@ -10,95 +10,79 @@ import UIKit
 
 typealias returnDate = (String?) -> ()
 
-enum dateformat:String{
-    case yyyy_m_d = "yyyy/MM/dd"
-    case d_m_yyyy = "dd/MM/yyyy"
-    case m_d_yy = "MM/dd/yy"
-    case d_mmmm_yy = "d-MMMM-yy"
-    case d_mmmm = "dd-MMMM"
-    case mmmm_yy = "MMMM-yy"
-    case h_mm_PM = "hh:mm aaa"
-    case h_mm_ss = "HH:mm:ss"
-    case yyyy_To_ss = "yyyy/MM/dd HH:mm:ss"
-}
-
 class PresentedViewController: UIViewController {
-
-    public var buttonColor:UIColor = UIColor.blue
-    public var pickerMode:UIDatePicker.Mode = .dateAndTime
-    public var minimumDate:Date? = nil
-    public var maximumDate:Date? = nil
-    public var returnDateFormat:dateformat = .yyyy_To_ss
-    public var titleString:String? = nil
     
-    fileprivate var picker:UIDatePicker = UIDatePicker()
-    fileprivate var confirmButton:UIButton = UIButton()
-    fileprivate let cornerRadius:CGFloat = 7.5
-    fileprivate let highlightedView:UIView = UIView()
-    fileprivate let pickerHeight:CGFloat = 216
-    fileprivate let pickerWidth:CGFloat = UIScreen.main.bounds.size.width - 10
+    private var picker:SJDatePicker = SJDatePicker()
+    private var confirmButton:UIButton = UIButton()
+    private let cornerRadius:CGFloat = 7.5
+    private let pickerHeight:CGFloat = 216
+    private let pickerWidth:CGFloat = UIScreen.main.bounds.size.width - 10
     
     var block:returnDate?
+    var style:PickerStyle = DefaultStyle()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        if titleString != nil {
-            let titleLabel:UILabel = UILabel(frame: CGRect(x: 5, y: 0, width: pickerWidth, height: 40))
-            titleLabel.backgroundColor = UIColor.white
+        injected()
+    }
+    
+    func injected() {
+        let btnConfirm = UIButton(type: .custom)
+        btnConfirm.setTitle("OK", for: .normal)
+        btnConfirm.backgroundColor = style.textColor
+        btnConfirm.layer.cornerRadius = cornerRadius
+        btnConfirm.layer.masksToBounds = true
+        btnConfirm.addTarget(self, action: #selector(confirmButton_Click), for: .touchUpInside)
+        btnConfirm.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(btnConfirm)
+        NSLayoutConstraint.activate([btnConfirm.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+                                     btnConfirm.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+                                     btnConfirm.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
+                                     btnConfirm.heightAnchor.constraint(equalToConstant: CustomPresentationController.buttonHeight)])
+        
+        
+        let viewPicker = UIView(frame: .zero)
+        viewPicker.backgroundColor = .white
+        viewPicker.layer.cornerRadius = cornerRadius
+        viewPicker.layer.masksToBounds = true
+        viewPicker.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(viewPicker)
+        NSLayoutConstraint.activate([viewPicker.bottomAnchor.constraint(equalTo: btnConfirm.topAnchor, constant: -10),
+                                     viewPicker.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+                                     viewPicker.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
+                                     viewPicker.heightAnchor.constraint(equalToConstant: pickerHeight)])
+        
+        picker.frame = .zero
+        picker.style = style
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        viewPicker.addSubview(picker)
+        NSLayoutConstraint.activate([picker.topAnchor.constraint(equalTo: viewPicker.topAnchor),
+                                     picker.leadingAnchor.constraint(equalTo: viewPicker.leadingAnchor),
+                                     picker.trailingAnchor.constraint(equalTo: viewPicker.trailingAnchor),
+                                     picker.bottomAnchor.constraint(equalTo: viewPicker.bottomAnchor)])
+        
+        if let title = style.titleString {
+            let titleLabel:UILabel = UILabel(frame: .zero)
+            titleLabel.backgroundColor = .white
             titleLabel.layer.cornerRadius = cornerRadius
             titleLabel.layer.masksToBounds = true
-            titleLabel.textColor = buttonColor
+            titleLabel.textColor = style.textColor
             titleLabel.textAlignment = .center
-            titleLabel.text = titleString
+            titleLabel.font = style.titleFont
+            titleLabel.text = title
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(titleLabel)
+            NSLayoutConstraint.activate([titleLabel.bottomAnchor.constraint(equalTo: viewPicker.topAnchor, constant: -10),
+                                         titleLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+                                         titleLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
+                                         titleLabel.heightAnchor.constraint(equalToConstant: 40)])
         }
-
-        picker.frame = CGRect(x: 5, y: 45, width: pickerWidth, height: pickerHeight)
-        picker.backgroundColor = UIColor.white
-        picker.timeZone = TimeZone(secondsFromGMT: TimeZone.current.secondsFromGMT())
-        picker.layer.cornerRadius = cornerRadius
-        picker.datePickerMode = self.pickerMode
-        
-        if let minDate = minimumDate {
-            picker.minimumDate = minDate
-        }
-        
-        if let maxDate = maximumDate {
-            picker.maximumDate = maxDate
-        }
-        
-        if let minDate = minimumDate, let maxDate = maximumDate {
-            assert(minDate < maxDate, "minimum date cannot bigger then maximum date")
-        }
-        
-        picker.layer.masksToBounds = true
-        self.view.addSubview(picker)
-        
-        highlightedView.frame = CGRect(x: -5, y: ((pickerHeight - 40) / 2) + 2 , width: pickerWidth + 10, height: 35.5)
-        highlightedView.backgroundColor = UIColor.clear
-        highlightedView.layer.borderColor = buttonColor.cgColor
-        highlightedView.layer.borderWidth = 1.0
-        picker.addSubview(highlightedView)
-        
-        
-        confirmButton.frame = CGRect(x: 5, y: CustomPresentationController.viewHeight + 5, width: pickerWidth, height: CustomPresentationController.buttonHeight)
-        confirmButton.setTitle("OK", for: .normal)
-        confirmButton.backgroundColor = buttonColor
-        confirmButton.setTitleColor(UIColor.white, for: .normal)
-        confirmButton.setTitleColor(UIColor.gray, for: .highlighted)
-        confirmButton.layer.cornerRadius = cornerRadius
-        confirmButton.layer.masksToBounds = true
-        confirmButton.addTarget(self, action: #selector(confirmButton_Click), for: .touchUpInside)
-        self.view.addSubview(confirmButton)
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.initialize()
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -115,14 +99,12 @@ class PresentedViewController: UIViewController {
     }
     
     @objc func confirmButton_Click(){
-        if block != nil {
-            self.dismiss(animated: true, completion: nil)
-            let df:DateFormatter = DateFormatter.init()
-            df.dateFormat = returnDateFormat.rawValue
-            df.timeZone = TimeZone(secondsFromGMT: TimeZone.current.secondsFromGMT())
-            let returnDate:String = df.string(from: picker.date)
-            block!(returnDate)
-        }
+        self.dismiss(animated: true, completion: nil)
+        let df:DateFormatter = DateFormatter.init()
+        df.dateFormat = style.returnDateFormat?.rawValue
+        df.timeZone = TimeZone(secondsFromGMT: TimeZone.current.secondsFromGMT())
+        let returnDate:String = df.string(from: picker.date)
+        block?(returnDate)
     }
 }
 
@@ -144,7 +126,6 @@ extension PresentedViewController:UIViewControllerTransitioningDelegate{
         }
     }
 
-    
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if dismissed == self {
             return CustomPresentationAnimationController(isPresenting: false)

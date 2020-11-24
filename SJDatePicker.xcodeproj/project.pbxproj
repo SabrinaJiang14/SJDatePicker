@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		713CB5871EAF2FBF00DFFC2D /* PresentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713CB5841EAF2FBF00DFFC2D /* PresentedViewController.swift */; };
-		713CB5881EAF2FBF00DFFC2D /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713CB5851EAF2FBF00DFFC2D /* CustomPresentationController.swift */; };
-		713CB5891EAF2FBF00DFFC2D /* CustomPresentationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713CB5861EAF2FBF00DFFC2D /* CustomPresentationAnimationController.swift */; };
+		043C4289256642AA0073A7CA /* SJDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C4288256642AA0073A7CA /* SJDatePicker.swift */; };
+		043C428C2566530D0073A7CA /* PickerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C428B2566530D0073A7CA /* PickerStyle.swift */; };
+		04D43DE825650B1000C7D6EF /* PresentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D43DE525650B1000C7D6EF /* PresentedViewController.swift */; };
+		04D43DE925650B1000C7D6EF /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D43DE625650B1000C7D6EF /* CustomPresentationController.swift */; };
+		04D43DEA25650B1000C7D6EF /* CustomPresentationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D43DE725650B1000C7D6EF /* CustomPresentationAnimationController.swift */; };
 		71F93C7B1E9D477A00FF18AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F93C7A1E9D477A00FF18AA /* AppDelegate.swift */; };
 		71F93C7D1E9D477A00FF18AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F93C7C1E9D477A00FF18AA /* ViewController.swift */; };
 		71F93C801E9D477A00FF18AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F93C7E1E9D477A00FF18AA /* Main.storyboard */; };
@@ -18,9 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		713CB5841EAF2FBF00DFFC2D /* PresentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentedViewController.swift; path = SJDatePicker/SJDatePicker/PresentedViewController.swift; sourceTree = SOURCE_ROOT; };
-		713CB5851EAF2FBF00DFFC2D /* CustomPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomPresentationController.swift; path = SJDatePicker/SJDatePicker/CustomPresentationController.swift; sourceTree = SOURCE_ROOT; };
-		713CB5861EAF2FBF00DFFC2D /* CustomPresentationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomPresentationAnimationController.swift; path = SJDatePicker/SJDatePicker/CustomPresentationAnimationController.swift; sourceTree = SOURCE_ROOT; };
+		043C4288256642AA0073A7CA /* SJDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SJDatePicker.swift; sourceTree = "<group>"; };
+		043C428B2566530D0073A7CA /* PickerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerStyle.swift; sourceTree = "<group>"; };
+		04D43DE525650B1000C7D6EF /* PresentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentedViewController.swift; sourceTree = "<group>"; };
+		04D43DE625650B1000C7D6EF /* CustomPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
+		04D43DE725650B1000C7D6EF /* CustomPresentationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentationAnimationController.swift; sourceTree = "<group>"; };
 		71F93C771E9D477A00FF18AA /* SJDatePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SJDatePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F93C7A1E9D477A00FF18AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71F93C7C1E9D477A00FF18AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +45,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04D43DE425650B1000C7D6EF /* SJDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				04D43DE525650B1000C7D6EF /* PresentedViewController.swift */,
+				043C428B2566530D0073A7CA /* PickerStyle.swift */,
+				043C4288256642AA0073A7CA /* SJDatePicker.swift */,
+				04D43DE625650B1000C7D6EF /* CustomPresentationController.swift */,
+				04D43DE725650B1000C7D6EF /* CustomPresentationAnimationController.swift */,
+			);
+			path = SJDatePicker;
+			sourceTree = "<group>";
+		};
 		71F93C6E1E9D477A00FF18AA = {
 			isa = PBXGroup;
 			children = (
@@ -60,7 +76,7 @@
 		71F93C791E9D477A00FF18AA /* SJDatePicker */ = {
 			isa = PBXGroup;
 			children = (
-				71F93C901E9D47E900FF18AA /* SJDatePicker */,
+				04D43DE425650B1000C7D6EF /* SJDatePicker */,
 				71F93C7A1E9D477A00FF18AA /* AppDelegate.swift */,
 				71F93C7C1E9D477A00FF18AA /* ViewController.swift */,
 				71F93C7E1E9D477A00FF18AA /* Main.storyboard */,
@@ -69,17 +85,6 @@
 				71F93C861E9D477A00FF18AA /* Info.plist */,
 			);
 			path = SJDatePicker;
-			sourceTree = "<group>";
-		};
-		71F93C901E9D47E900FF18AA /* SJDatePicker */ = {
-			isa = PBXGroup;
-			children = (
-				713CB5841EAF2FBF00DFFC2D /* PresentedViewController.swift */,
-				713CB5851EAF2FBF00DFFC2D /* CustomPresentationController.swift */,
-				713CB5861EAF2FBF00DFFC2D /* CustomPresentationAnimationController.swift */,
-			);
-			name = SJDatePicker;
-			path = FADatePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,11 +161,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				713CB5881EAF2FBF00DFFC2D /* CustomPresentationController.swift in Sources */,
-				713CB5891EAF2FBF00DFFC2D /* CustomPresentationAnimationController.swift in Sources */,
+				04D43DE925650B1000C7D6EF /* CustomPresentationController.swift in Sources */,
 				71F93C7D1E9D477A00FF18AA /* ViewController.swift in Sources */,
+				043C4289256642AA0073A7CA /* SJDatePicker.swift in Sources */,
 				71F93C7B1E9D477A00FF18AA /* AppDelegate.swift in Sources */,
-				713CB5871EAF2FBF00DFFC2D /* PresentedViewController.swift in Sources */,
+				04D43DEA25650B1000C7D6EF /* CustomPresentationAnimationController.swift in Sources */,
+				043C428C2566530D0073A7CA /* PickerStyle.swift in Sources */,
+				04D43DE825650B1000C7D6EF /* PresentedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,9 +242,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -287,8 +295,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -303,6 +312,10 @@
 				DEVELOPMENT_TEAM = 8MAB78TT6T;
 				INFOPLIST_FILE = SJDatePicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-interposable",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tw.sabrina.SJDatePicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -319,6 +332,10 @@
 				DEVELOPMENT_TEAM = 8MAB78TT6T;
 				INFOPLIST_FILE = SJDatePicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-interposable",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tw.sabrina.SJDatePicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
