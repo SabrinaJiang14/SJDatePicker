@@ -312,6 +312,7 @@
 				DEVELOPMENT_TEAM = 8MAB78TT6T;
 				INFOPLIST_FILE = SJDatePicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-interposable",
@@ -332,6 +333,7 @@
 				DEVELOPMENT_TEAM = 8MAB78TT6T;
 				INFOPLIST_FILE = SJDatePicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-interposable",
