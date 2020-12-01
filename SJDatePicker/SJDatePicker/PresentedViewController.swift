@@ -42,7 +42,7 @@ class PresentedViewController: UIViewController {
         
         
         let viewPicker = UIView(frame: .zero)
-        viewPicker.backgroundColor = .white
+        viewPicker.backgroundColor = style.backColor
         viewPicker.layer.cornerRadius = cornerRadius
         viewPicker.layer.masksToBounds = true
         viewPicker.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +63,7 @@ class PresentedViewController: UIViewController {
         
         if let title = style.titleString {
             let titleLabel:UILabel = UILabel(frame: .zero)
-            titleLabel.backgroundColor = .white
+            titleLabel.backgroundColor = style.backColor
             titleLabel.layer.cornerRadius = cornerRadius
             titleLabel.layer.masksToBounds = true
             titleLabel.textColor = style.textColor

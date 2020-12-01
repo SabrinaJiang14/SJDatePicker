@@ -10,6 +10,7 @@ Just run the example project, or clone the repo.
 * Xcode 12 or above
 * iOS 14
 * Swift 5.2
+* Support Dark mode
 
 ![GITHUB](https://github.com/SabrinaJiang14/SJDatePicker/blob/master/Example/demo.gif "demo")
 
